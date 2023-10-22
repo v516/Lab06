@@ -74,7 +74,7 @@ int main(){
   Read_From_File(matrix_B, size, "matrix_input.txt");
 
   cout << "Victor Maduka" << '\n';
-  cout << "Lab #6: Matrix Manipulation.";
+  cout << "Lab #6: Matrix Manipulation." << '\n';
 
   cout << "Matrix A:" << '\n';
   print_Matrix(matrix_A, size);
