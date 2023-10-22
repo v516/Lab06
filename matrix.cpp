@@ -6,7 +6,7 @@ using namespace std;
 
 static const int Max_Size = 100; //Sets the maximum size of the square matrix
 
-void Read_From_File(int matrix[Max_Size][Max_Size], int& size, const char* file_name){
+void Read_From_File(int matrix_A[Max_Size][Max_Size], int matrix_B[Max_Size][Max_Size], int& size, const char* file_name){
   ifstream file(file_name);
   if(!file.is_open()){ //Checks if the file is not open
       cerr << "Error: Cannot Open The File." << endl;
@@ -14,9 +14,15 @@ void Read_From_File(int matrix[Max_Size][Max_Size], int& size, const char* file_
   }
   file >> size; // reads the size of the square matrix from the matrix.txt and stores it in the size variable
 
-  for (int i = 0; i < size; i++){ // the rows of the matrix
-    for(int j = 0; j < size; j++){ // the column of the matrix
-      file >> matrix[i][j];
+  for(int i = 0; i < size; i++){ // the rows of the matrix A
+    for(int j = 0; j < size; j++){ // the column of the matrix A
+      file >> matrix_A[i][j];
+    }
+  }
+
+  for(int i = 0; i < size; i++){ // the rows of the matrix B
+    for(int j = 0; j < size; j++){ // the column of the matrix B
+      file >> matrix_B[i][j];
     }
   }
 
@@ -70,15 +76,17 @@ int main(){
   int matrix_B[Max_Size][Max_Size];
   int matrix_result[Max_Size][Max_Size];
 
-  Read_From_File(matrix_A, size, "matrix_input.txt");
-  Read_From_File(matrix_B, size, "matrix_input.txt");
+//Calling the function in main to read the matrix_input file
+  Read_From_File(matrix_A, matrix_B, size, "matrix_input.txt");
 
   cout << "Victor Maduka" << '\n';
-  cout << "Lab #6: Matrix Manipulation." << '\n';
+  cout << "Lab #6: Matrix Manipulation."<< '\n';
 
+//Prints out matrix A
   cout << "Matrix A:" << '\n';
   print_Matrix(matrix_A, size);
 
+//Prints out matrix B
   cout << "Matrix B:" << '\n';
   print_Matrix(matrix_B, size);
 
